@@ -25,7 +25,7 @@ func Route() App {
 	}))
 
 	r.Use(cors.New(cors.Config{
-		AllowOrigins: os.Getenv("ORIGIN"),
+		AllowOrigins: "http://" + os.Getenv("ORIGIN"),
 		AllowMethods: "GET, POST, DELETE",
 	}))
 	r.Use(ctrl.Acceptable)

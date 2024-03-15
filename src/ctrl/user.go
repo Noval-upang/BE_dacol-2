@@ -8,7 +8,6 @@ import (
 	"github.com/Hy-Iam-Noval/dacol-2/src/DB"
 	"github.com/Hy-Iam-Noval/dacol-2/src/helpers"
 	"github.com/Hy-Iam-Noval/dacol-2/src/validation"
-	"github.com/gofiber/fiber/v2"
 )
 
 func Login(c Ctx) error {
@@ -40,10 +39,10 @@ func Register(c Ctx) error {
 		return c.Status(helpers.Invalid).JSON(err)
 	}
 
-	passCrypt, err := bcrypt.GenerateFromPassword([]byte(req.Password), bcrypt.DefaultCost)
-	if err != nil {
-		return fiber.NewError(fiber.ErrBadGateway.Code, err.Error())
-	}
+	passCrypt, _ := bcrypt.GenerateFromPassword([]byte(req.Password), bcrypt.DefaultCost)
+	// if err != nil {
+	// 	return fiber.NewError(fiber.ErrBadGateway.Code, err.Error())
+	// }
 
 	DB.
 		Create("user", DB.User{Email: req.Email, Password: string(passCrypt)}).

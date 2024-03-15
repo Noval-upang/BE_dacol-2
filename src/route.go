@@ -2,6 +2,7 @@ package src
 
 import (
 	"net/http"
+	"os"
 
 	"github.com/Hy-Iam-Noval/dacol-2/src/ctrl"
 	"github.com/Hy-Iam-Noval/dacol-2/src/helpers"
@@ -24,7 +25,7 @@ func Route() App {
 	}))
 
 	r.Use(cors.New(cors.Config{
-		AllowOrigins: "https://fedacol2-production.up.railway.app",
+		AllowOrigins: "https://" + os.Getenv("ORIGIN"),
 		AllowMethods: "GET, POST, DELETE",
 	}))
 	r.Use(ctrl.Acceptable)

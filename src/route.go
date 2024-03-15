@@ -24,7 +24,7 @@ func Route() App {
 	}))
 
 	r.Use(cors.New(cors.Config{
-		AllowOrigins: "http://fedacol2-production.up.railway.app",
+		AllowOrigins: "https://fedacol2-production.up.railway.app",
 		AllowMethods: "GET, POST, DELETE",
 	}))
 	r.Use(ctrl.Acceptable)
